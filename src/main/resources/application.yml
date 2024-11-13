@@ -1,0 +1,24 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://192.168.186.128:3307/db_tag
+    username: root
+    password: 1234
+  # redis
+  data:
+    redis:
+      host: 192.168.186.128
+      port: 6380
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:dao/*.xml
+
+
+

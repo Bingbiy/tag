@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hg.tagnew.dao.CategoryDao">
+    <insert id="addCategory">
+        insert into t_category (name) values (#{Name});
+    </insert>
+
+<!--    void update(Category category);-->
+    <update id="update">
+        update t_category set name = #{name} where id = #{id};
+    </update>
+
+    <!--        删除 void delCategory(Integer id);-->
+    <delete id="delCategory">
+        delete from t_category where id = #{id};
+    </delete>
+
+
+    <select id="findAll" resultType="com.hg.tagnew.pojo.entity.Category">
+        select * from t_category
+    </select>
+    <select id="findLinkByCategoryName" resultType="com.hg.tagnew.pojo.entity.Link">
+        select title ,tl.link from
+            t_category tc inner join category_link cl on tc.id = cl.category_id
+                          left join t_link tl on tl.id = cl.link_id where tc.name = #{categoryName};
+
+    </select>
+
+
+</mapper>
