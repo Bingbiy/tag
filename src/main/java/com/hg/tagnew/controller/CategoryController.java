@@ -75,8 +75,14 @@ public class CategoryController {
     @PutMapping("/update")
     public Result updateCategory(@RequestBody Category category){
 
+        Category c =  categoryService.findCategoryByName(category.getName());
+
         if (ObjectUtils.isEmpty(category)){
             return Result.build(null,ResultCodeEnum.RC999);
+        }
+
+        if (!ObjectUtils.isEmpty(c)){
+            return Result.build(null,ResultCodeEnum.RC801);
         }
 
         categoryService.update(category);
@@ -107,6 +113,14 @@ public class CategoryController {
 
         return Result.build(map,ResultCodeEnum.RC200);
 
+    }
+
+    //搜索分类
+    @GetMapping("/search/{categoryName}")
+    public Result searchCategory(@PathVariable String categoryName){
+
+        List<Category> list =  categoryService.searchCategory(categoryName);
+        return Result.build(list,ResultCodeEnum.RC200);
     }
     
 

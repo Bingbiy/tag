@@ -68,6 +68,20 @@ public class CategoryServiceImpl implements CategoryService {
         return map;
     }
 
+    //搜索分类
+    @Override
+    public List<Category> searchCategory(String categoryName) {
+
+
+        return categoryDao.searchCategory(categoryName);
+    }
+
+    //根据分类名称查询分类
+    @Override
+    public Category findCategoryByName(String name) {
+       return categoryDao.findCategoryByName(name);
+    }
+
     @Override
     public PageInfo<Category> findAllByPage(Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum,pageSize);

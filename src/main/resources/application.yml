@@ -14,11 +14,9 @@ spring:
       host: 192.168.186.128
       port: 6380
 
-
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:dao/*.xml
-
 
 

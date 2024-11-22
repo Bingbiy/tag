@@ -26,4 +26,10 @@ public interface CategoryService {
     Map findLinkByCategoryName(String categoryName);
 
     PageInfo<Category> findAllByPage(Integer pageNum, Integer pageSize);
+
+    //搜索分类
+    List<Category> searchCategory(String categoryName);
+
+    //根据分类名称查询分类
+    Category findCategoryByName(String name);
 }

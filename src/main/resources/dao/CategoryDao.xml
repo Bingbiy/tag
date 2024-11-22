@@ -25,6 +25,15 @@
                           left join t_link tl on tl.id = cl.link_id where tc.name = #{categoryName};
 
     </select>
+    <select id="searchCategory" resultType="com.hg.tagnew.pojo.entity.Category">
+
+        select * from t_category where name like concat('%',#{name},'%')
+
+    </select>
+
+    <select id="findCategoryByName" resultType="com.hg.tagnew.pojo.entity.Category">
+        select * from t_category where name = #{name}
+    </select>
 
 
 </mapper>
